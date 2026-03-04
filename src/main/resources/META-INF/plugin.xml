@@ -1,0 +1,44 @@
+<idea-plugin>
+    <id>com.f3dc4r.waterreminder</id>
+    <name>Water Reminder</name>
+    <version>1.0.0</version>
+    <vendor url="https://github.com/f3dc4r">f3dc4r</vendor>
+
+    <description><![CDATA[
+        Reminds you to drink water while coding!<br><br>
+        <b>Features:</b><br>
+        <ul>
+            <li>💧 Water drop icon in the status bar</li>
+            <li>Configurable reminder interval (1–480 minutes)</li>
+            <li>Enable/disable with one click</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.f3dc4r.waterreminder.WaterReminderConfigurable"
+                id="com.f3dc4r.waterreminder.settings"
+                displayName="Water Reminder"/>
+
+        <applicationService
+                serviceImplementation="com.f3dc4r.waterreminder.WaterReminderSettings"/>
+
+        <statusBarWidgetFactory
+                implementation="com.f3dc4r.waterreminder.WaterStatusBarWidgetFactory"
+                id="WaterReminderWidget"
+                order="last"/>
+
+        <notificationGroup id="Water Reminder"
+                           displayType="BALLOON"
+                           isLogByDefault="false"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener
+                class="com.f3dc4r.waterreminder.WaterReminderStartupListener"
+                topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
+</idea-plugin>
