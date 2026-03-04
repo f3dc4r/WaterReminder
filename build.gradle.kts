@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.f3dc4r"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
