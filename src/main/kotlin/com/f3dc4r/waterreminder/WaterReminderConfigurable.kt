@@ -26,7 +26,7 @@ class WaterReminderConfigurable : Configurable {
         val freqPanel = JPanel(FlowLayout(FlowLayout.LEFT, 0, 0))
         freqPanel.alignmentX = Component.LEFT_ALIGNMENT
         freqPanel.add(JLabel("Frequency (minutes): "))
-        intervalSpinner = JSpinner(SpinnerNumberModel(30, 1, 480, 5))
+        intervalSpinner = JSpinner(SpinnerNumberModel(30, 1, 480, 1))
         intervalSpinner.preferredSize = Dimension(70, intervalSpinner.preferredSize.height)
         freqPanel.add(intervalSpinner)
         innerPanel.add(freqPanel)

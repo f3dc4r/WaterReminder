@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.f3dc4r.waterreminder</id>
     <name>Water Reminder</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor url="https://github.com/f3dc4r">f3dc4r</vendor>
 
     <description><![CDATA[
@@ -34,11 +34,8 @@
         <notificationGroup id="Water Reminder"
                            displayType="BALLOON"
                            isLogByDefault="false"/>
-    </extensions>
 
-    <applicationListeners>
-        <listener
-                class="com.f3dc4r.waterreminder.WaterReminderStartupListener"
-                topic="com.intellij.ide.AppLifecycleListener"/>
-    </applicationListeners>
+        <postStartupActivity
+                implementation="com.f3dc4r.waterreminder.WaterReminderStartupListener"/>
+    </extensions>
 </idea-plugin>

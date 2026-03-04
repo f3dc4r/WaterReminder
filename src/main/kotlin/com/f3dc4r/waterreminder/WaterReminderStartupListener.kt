@@ -1,14 +1,11 @@
 package com.f3dc4r.waterreminder
 
-import com.intellij.ide.AppLifecycleListener
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.startup.ProjectActivity
 
-class WaterReminderStartupListener : AppLifecycleListener {
+class WaterReminderStartupListener : ProjectActivity {
 
-    override fun appStarted() {
+    override suspend fun execute(project: Project) {
         WaterReminderService.getInstance().start()
-    }
-
-    override fun appClosing() {
-        WaterReminderService.getInstance().stop()
     }
 }
