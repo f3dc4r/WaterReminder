@@ -23,7 +23,14 @@ class WaterReminderService {
 
         scheduler = Executors.newSingleThreadScheduledExecutor()
         scheduler?.scheduleAtFixedRate(
-            ::showNotification,
+            {
+                try {
+                    showNotification()
+                } catch (e: Exception) {
+                    // Cattura qualsiasi eccezione per evitare che il timer si fermi
+                    e.printStackTrace()
+                }
+            },
             settings.intervalMinutes.toLong(),
             settings.intervalMinutes.toLong(),
             TimeUnit.MINUTES
@@ -42,14 +49,18 @@ class WaterReminderService {
 
     private fun showNotification() {
         ApplicationManager.getApplication().invokeLater {
-            NotificationGroupManager.getInstance()
-                .getNotificationGroup("Water Reminder")
-                .createNotification(
-                    "💧 Drink water!",
-                    "It's time to hydrate! Drink a glass of water.",
-                    NotificationType.INFORMATION
-                )
-                .notify(null)
+            try {
+                NotificationGroupManager.getInstance()
+                    .getNotificationGroup("Water Reminder")
+                    .createNotification(
+                        "💧 Time to drink water!",
+                        "Stay hydrated! Drink a glass of water.",
+                        NotificationType.INFORMATION
+                    )
+                    .notify(null)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }
