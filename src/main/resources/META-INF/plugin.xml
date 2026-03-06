@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.f3dc4r.waterreminder</id>
     <name>Water Reminder</name>
-    <version>1.0.3</version>
+    <version>1.0.5</version>
     <vendor url="https://github.com/f3dc4r">f3dc4r</vendor>
 
     <description><![CDATA[
